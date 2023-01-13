@@ -1,29 +1,49 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div id="app" :style="{width:pageWidthPx,height: pageHeightPx,marginTop: marginTop}">
+    <Home />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
-
+import Home from './view/Home.vue';
+import './assets/style/reset.scss'
 @Component({
   components: {
-    HelloWorld,
+    Home,
   },
 })
-export default class App extends Vue {}
+
+export default class App extends Vue {
+  clientWidth = document.documentElement.clientWidth;
+  clientHeight = document.documentElement.clientHeight;
+  pageWidth = this.clientWidth / this.clientHeight > 16 / 9
+    ? this.clientHeight * (16 / 9)
+    : this.clientWidth;
+  pageHeight = this.pageWidth / (16 / 9);
+  get pageWidthPx() {
+    return this.clientWidth / this.clientHeight > 16 / 9
+      ? this.clientHeight * (16 / 9) + 'px'
+      : this.clientWidth + 'px'
+  }
+  get pageHeightPx() {
+    return this.pageWidth / (16 / 9) + 'px'
+  }
+
+  get marginTop() {
+    return (this.clientHeight - this.pageHeight) / 2 + 'px'
+  }
+
+}
 </script>
 
-<style lang="scss">
+<style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: v-bind(pageHeightPx);
+  margin-top: v-bind(clientHeight - pageHeight) / 2 px;
+  margin: 0 auto;
+  background: skyblue;
 }
 </style>
