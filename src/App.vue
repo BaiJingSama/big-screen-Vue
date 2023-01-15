@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="{width:pageWidthPx,height: pageHeightPx,marginTop: marginTop}">
+  <div id="app" :style="{width:pageWidthPx,height: pageHeightPx,marginTop: marginTop,flex:1}">
     <Home />
   </div>
 </template>
@@ -42,7 +42,7 @@ export default class App extends Vue {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
-  background: skyblue;
+  background: pink;
   display: flex;
   flex-direction: column;
 }
