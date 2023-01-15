@@ -41,9 +41,9 @@ export default class App extends Vue {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: v-bind(pageHeightPx);
-  margin-top: v-bind(clientHeight - pageHeight) / 2 px;
   margin: 0 auto;
   background: skyblue;
+  display: flex;
+  flex-direction: column;
 }
 </style>
