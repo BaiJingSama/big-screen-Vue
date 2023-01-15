@@ -73,10 +73,13 @@ export default {
 
   main {
     flex: 1;
+    padding: px(30);
     display: grid;
     grid-template:
       "box1 box1 box4" 90fr
       "box2 box3 box4" 570fr / 360fr 570fr 390fr;
+    grid-column-gap: px(30);
+    grid-row-gap: px(30);
 
     >.section1 {
       grid-area: box1;
