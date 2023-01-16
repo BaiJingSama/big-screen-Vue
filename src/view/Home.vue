@@ -12,7 +12,9 @@
       </div>
     </header>
     <main>
-      <section class="section1"></section>
+      <section class="section1">
+        <chart1 class="chart1" />
+      </section>
       <section class="section2"></section>
       <section class="section3"></section>
       <section class="section4"></section>
@@ -20,8 +22,17 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import chart1 from '../components/chart-1.vue';
+@Component({
+  components: {
+    chart1,
+  },
+})
+
+export default class App extends Vue {
+
 
 }
 </script>
@@ -33,6 +44,7 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
+  background: #080717;
 
   header {
     height: px(61);
@@ -81,24 +93,50 @@ export default {
     grid-column-gap: px(30);
     grid-row-gap: px(30);
 
+    >section {
+      border: 1px solid #131e5c;
+      position: relative;
+      box-shadow: 0 0 2px 0 #2c4fb7, inset 0 0 2px 0 #2c4fb7;
+
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        /* border: 1px solid red; */
+        box-shadow:
+          21px 0 0 -20px #2c4fb7,
+          -21px 0 0 -20px #2c4fb7,
+          0 21px 0 -20px #2c4fb7,
+          0 -21px 0 -20px #2c4fb7,
+          11px 0 0 -10px #2e4094,
+          -11px 0 0 -10px #2e4094,
+          0 11px 0 -10px #2e4094,
+          0 -11px 0 -10px #2e4094,
+      }
+    }
+
     >.section1 {
       grid-area: box1;
-      background: skyblue;
+
+      .chart1 {
+        height: 100%;
+      }
     }
 
     >.section2 {
       grid-area: box2;
-      background: lightgray;
     }
 
     >.section3 {
       grid-area: box3;
-      background: lightblue;
     }
 
     >.section4 {
       grid-area: box4;
-      background: salmon;
     }
   }
 }
