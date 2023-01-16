@@ -25,12 +25,16 @@
         <div class="bordered 年龄分布">
           <h2>犯罪人员年龄分布 <span>(截止2022年12月)</span></h2>
           <div class="chart">
-
             <chart3 />
           </div>
         </div>
       </section>
-      <section class="bordered section3"></section>
+      <section class="section3">
+        <div class="bordered 籍贯分布">
+          <h2>全市犯罪人员籍贯分布地 <span>(截止2022年12月)</span></h2>
+          <chart4 />
+        </div>
+      </section>
       <section class="section4"></section>
     </main>
   </div>
@@ -41,11 +45,13 @@ import { Component, Vue } from 'vue-property-decorator';
 import chart1 from '../components/chart-1.vue';
 import chart2 from '../components/chart-2.vue'
 import chart3 from '../components/chart-3.vue'
+import chart4 from '../components/chart-4.vue'
 @Component({
   components: {
     chart1,
     chart2,
     chart3,
+    chart4,
   },
 })
 
@@ -114,6 +120,7 @@ export default class App extends Vue {
     grid-row-gap: px(30);
 
     .bordered {
+      background: #070d27;
       border: 1px solid #131e5c;
       position: relative;
       box-shadow: 0 0 2px 0 #2c4fb7, inset 0 0 2px 0 #2c4fb7;
@@ -164,7 +171,8 @@ export default class App extends Vue {
     }
 
     .案发趋势,
-    .年龄分布 {
+    .年龄分布,
+    .籍贯分布 {
       height: px(270);
       display: flex;
       flex-direction: column;
@@ -193,6 +201,11 @@ export default class App extends Vue {
         width: 100%;
         flex: 1;
       }
+    }
+
+    .籍贯分布 {
+      height: px(569);
+      background: transparent;
     }
   }
 }

@@ -1,6 +1,7 @@
 <template>
   <div>
     <div ref="divRef" class="chart"></div>
+
     <div class="legend">
       <span :style={background:colors[0]} />
       10-20岁
