@@ -123,6 +123,7 @@ export default class App extends Vue {
   justify-content: space-between;
   align-items: center;
 
+
   >li {
     display: flex;
     align-items: center;
@@ -180,10 +181,12 @@ export default class App extends Vue {
       .number {
         font-size: px(18);
         font-weight: 700;
+        text-shadow: 0 0 px(4) #2c4fb7;
       }
 
       .text {
         font-size: px(10);
+        text-shadow: 0 0 px(3) #2c4fb7;
       }
     }
   }

@@ -12,11 +12,18 @@
       </div>
     </header>
     <main>
-      <section class="section1">
-        <chart1 class="chart1" />
+      <section class="bordered section1">
+        <chart1 class=" chart1" />
       </section>
-      <section class="section2"></section>
-      <section class="section3"></section>
+      <section class="section2">
+        <div class="bordered 案发趋势">
+          <h2>案发趋势统计 <span>(截止2022年10月)</span></h2>
+          <div class="chart">
+            <chart2 />
+          </div>
+        </div>
+      </section>
+      <section class="bordered section3"></section>
       <section class="section4"></section>
     </main>
   </div>
@@ -25,9 +32,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import chart1 from '../components/chart-1.vue';
+import chart2 from '../components/chart-2.vue'
 @Component({
   components: {
     chart1,
+    chart2,
   },
 })
 
@@ -45,6 +54,8 @@ export default class App extends Vue {
   display: flex;
   flex-direction: column;
   background: #080717;
+
+  color: #fff;
 
   header {
     height: px(61);
@@ -93,7 +104,7 @@ export default class App extends Vue {
     grid-column-gap: px(30);
     grid-row-gap: px(30);
 
-    >section {
+    .bordered {
       border: 1px solid #131e5c;
       position: relative;
       box-shadow: 0 0 2px 0 #2c4fb7, inset 0 0 2px 0 #2c4fb7;
@@ -137,6 +148,37 @@ export default class App extends Vue {
 
     >.section4 {
       grid-area: box4;
+    }
+
+    .案发趋势 {
+      height: px(270);
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        flex-shrink: 0;
+        width: 100%;
+        height: px(25);
+        border-bottom: 1px solid #2c4fb7;
+        box-shadow: 0 0 2px 0 #2c4fb7, inset 0 0 2px 0 #2c4fb7;
+        font-size: px(14);
+        font-weight: 700;
+        line-height: px(25);
+        padding-left: px(15);
+        text-shadow: 0 0 px(3) #2c4fb7;
+
+
+        span {
+          font-size: px(12);
+          color: #575c7a;
+          margin-left: px(5);
+        }
+      }
+
+      .chart {
+        width: 100%;
+        flex: 1;
+      }
     }
   }
 }
