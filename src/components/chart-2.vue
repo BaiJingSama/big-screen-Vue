@@ -1,6 +1,5 @@
 <template>
   <div ref="divRef" class="chart">
-    hi
   </div>
 </template>
 
