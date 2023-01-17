@@ -9,10 +9,15 @@ import { Component, Vue } from 'vue-property-decorator';
 import * as echarts from 'echarts';
 import { createEchartOptions } from '@/shared/create-echart-options';
 import { px } from '@/shared/px';
+
+type data = {
+  name: string
+}[]
+
 @Component
 export default class extends Vue {
 
-  data = [
+  data: data = [
     { name: "武侯区" },
     { name: "金牛区" },
     { name: "高新区" },
@@ -23,6 +28,8 @@ export default class extends Vue {
     { name: "温江区" },
     { name: "郫都区" },
   ];
+
+
   randomArr() {
     let arr = []
     for (let i = 0; i < 9; i++) {
@@ -31,13 +38,14 @@ export default class extends Vue {
     return arr
   }
 
-  mounted() {
-    let chart = echarts.init(this.$refs.divRef as HTMLElement);
-    chart.setOption(
+  chart: any = null
+
+  setChart(data: data) {
+    this.chart.setOption(
       createEchartOptions(
         {
           xAxis: {
-            data: this.data.map((i) => i.name),
+            data: data.map((i) => i.name),
             axisTick: { show: false },
             axisLine: {
               lineStyle: {
@@ -72,6 +80,14 @@ export default class extends Vue {
           ],
         }
       ))
+  }
+
+  mounted() {
+    this.chart = echarts.init(this.$refs.divRef as HTMLElement);
+    this.setChart(this.data)
+    setInterval(() => {
+      this.setChart(this.data)
+    }, 2000)
   }
 
 }
