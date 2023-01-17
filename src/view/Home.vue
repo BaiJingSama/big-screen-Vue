@@ -42,6 +42,7 @@
         </div>
         <div class="bordered 管辖统计">
           <h2>案发派出所管辖统计 <span>(截止2022年12月)</span></h2>
+          <chart6 />
         </div>
         <div class="bordered 案发类型">
           <h2>案发类型统计 <span>(截止2022年8月)</span></h2>
@@ -58,6 +59,7 @@ import chart2 from '../components/chart-2.vue'
 import chart3 from '../components/chart-3.vue'
 import chart4 from '../components/chart-4.vue'
 import chart5 from '../components/chart-5.vue'
+import chart6 from '../components/chart-6.vue'
 @Component({
   components: {
     chart1,
@@ -65,6 +67,7 @@ import chart5 from '../components/chart-5.vue'
     chart3,
     chart4,
     chart5,
+    chart6,
   },
 })
 
