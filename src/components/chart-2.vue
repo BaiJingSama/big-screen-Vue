@@ -31,7 +31,6 @@ export default class extends Vue {
     }
     return arr
   }
-
   chart: any = null
 
   setChart(data: data) {

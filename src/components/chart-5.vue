@@ -10,10 +10,13 @@ import * as echarts from 'echarts';
 import { createEchartOptions } from '@/shared/create-echart-options';
 import { px } from '@/shared/px';
 
+type data = {
+  name: number
+}[]
+
 @Component
 export default class extends Vue {
-
-  data = [
+  data: data = [
     { name: 0 },
     { name: 2 },
     { name: 4 },
@@ -31,20 +34,21 @@ export default class extends Vue {
   randomArr() {
     let arr = []
     for (let i = 0; i < 12; i++) {
-      arr.push((0.02 + Math.random() * 0.20).toFixed(2))
+      arr.push((0.12 + Math.random() * 0.15).toFixed(2))
     }
     return arr
   }
+  chart: any = null
 
-  mounted() {
-    let chart = echarts.init(this.$refs.divRef as HTMLElement);
-    chart.setOption(
+
+  setChart(data: data) {
+    this.chart.setOption(
       createEchartOptions(
         {
           xAxis: {
             type: "category",
             boundaryGap: false,
-            data: this.data.map((i) => i.name),
+            data: data.map((i) => i.name),
             splitLine: { show: true, lineStyle: { color: "#073E78" } },
             axisTick: { show: false },
             axisLine: { show: false },
@@ -81,6 +85,15 @@ export default class extends Vue {
           ],
         }
       ))
+  }
+
+  mounted() {
+
+    this.chart = echarts.init(this.$refs.divRef as HTMLElement);
+    this.setChart(this.data)
+    setInterval(() => {
+      this.setChart(this.data)
+    }, 2000)
   }
 }
 </script>
