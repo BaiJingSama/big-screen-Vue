@@ -31,7 +31,7 @@ export default class extends Vue {
     }
     return arr
   }
-  chart: any = null
+  chart = null
 
   setChart(data: data) {
     this.chart.setOption(
