@@ -8,10 +8,14 @@ import { Component, Vue } from 'vue-property-decorator';
 import * as echarts from 'echarts';
 import { createEchartOptions } from '@/shared/create-echart-options';
 import { px } from '@/shared/px';
+type data = {
+  name: number
+}[]
 
 @Component
 export default class extends Vue {
-  data = [
+
+  data: data = [
     { name: 2016 },
     { name: 2017 },
     { name: 2018 },
@@ -28,11 +32,10 @@ export default class extends Vue {
     return arr
   }
 
+  chart: any = null
 
-
-  mounted() {
-    let chart = echarts.init(this.$refs.divRef as HTMLElement);
-    chart.setOption(
+  setChart(data: data) {
+    this.chart.setOption(
       createEchartOptions({
         legend: {
           bottom: px(15),
@@ -50,7 +53,7 @@ export default class extends Vue {
         xAxis: {
           type: "category",
           boundaryGap: false,
-          data: this.data.map((i) => i.name),
+          data: data.map((i) => i.name),
           splitLine: { show: true, lineStyle: { color: "#2c4fb7" } },
           axisTick: { show: false },
           axisLine: { show: false },
@@ -94,6 +97,17 @@ export default class extends Vue {
       })
     )
   }
+
+  mounted() {
+    this.chart = echarts.init(this.$refs.divRef as HTMLElement);
+    this.setChart(this.data)
+    setInterval(() => {
+      this.setChart(this.data)
+    }, 2000)
+  }
+
+
+
 }
 </script>
 
