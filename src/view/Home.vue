@@ -7,8 +7,8 @@
       </div>
       <div class="title">蜀都市公安局大屏作战平台</div>
       <div class="time">
-        <span>13:36:25</span>
-        <span>2023年1月15日</span>
+        <span> {{newTime}}</span>
+        <span>{{newDate}}</span>
       </div>
     </header>
     <main>
@@ -50,6 +50,9 @@
         </div>
       </section>
     </main>
+    <footer>
+      <div> &copy; 白境制作，数据地名均为虚拟，该页面只作为展示，其余用途无效 2022-{{year}}</div>
+    </footer>
   </div>
 </template>
 
@@ -75,8 +78,35 @@ import chart7 from '@/components/chart-7.vue';
 })
 
 export default class App extends Vue {
+  days = ['天', '一', '二', '三', '四', '五', '六']
 
+  initDate = new Date()
 
+  year = this.initDate.getFullYear();
+  month = this.initDate.getMonth() + 1
+  date = this.initDate.getDate()
+  day = this.days[this.initDate.getDay() - 1]
+  time = this.initDate.toTimeString().substring(0, 8)
+
+  // eslint-disable-next-line no-undef
+  interval: NodeJS.Timer | null = null
+
+  created() {
+    this.interval = setInterval(() => {
+      let initDate = new Date()
+      this.year = initDate.getFullYear();
+      this.month = initDate.getMonth() + 1;
+      this.date = initDate.getDate();
+      this.time = initDate.toTimeString().substring(0, 8)
+    }, 1000)
+  }
+  get newDate() {
+    return this.year + '年' + this.month + '月' + this.date + '日'
+  }
+
+  get newTime() {
+    return this.time
+  }
 }
 </script>
 
@@ -130,7 +160,7 @@ export default class App extends Vue {
 
   main {
     flex: 1;
-    padding: px(30);
+    padding: px(20);
     display: grid;
     grid-template:
       "box1 box1 box4" 90fr
@@ -238,6 +268,13 @@ export default class App extends Vue {
     .案发类型 {
       height: px(210);
     }
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: px(12);
   }
 }
 </style>
