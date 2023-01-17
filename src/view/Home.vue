@@ -35,7 +35,17 @@
           <chart4 />
         </div>
       </section>
-      <section class="section4"></section>
+      <section class="section4">
+        <div class="bordered 案发时段">
+          <h2>案发时段分析 <span>(截止2022年10月)</span></h2>
+        </div>
+        <div class="bordered 管辖统计">
+          <h2>案发派出所管辖统计 <span>(截止2022年12月)</span></h2>
+        </div>
+        <div class="bordered 案发类型">
+          <h2>案发类型统计 <span>(截止2022年8月)</span></h2>
+        </div>
+      </section>
     </main>
   </div>
 </template>
@@ -168,11 +178,17 @@ export default class App extends Vue {
 
     >.section4 {
       grid-area: box4;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
     }
 
     .案发趋势,
     .年龄分布,
-    .籍贯分布 {
+    .籍贯分布,
+    .案发时段,
+    .管辖统计,
+    .案发类型 {
       height: px(270);
       display: flex;
       flex-direction: column;
@@ -206,6 +222,12 @@ export default class App extends Vue {
     .籍贯分布 {
       height: px(569);
       background: transparent;
+    }
+
+    .案发时段,
+    .管辖统计,
+    .案发类型 {
+      height: px(210);
     }
   }
 }

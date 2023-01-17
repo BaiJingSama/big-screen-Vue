@@ -3,12 +3,12 @@
     <div ref="divRef" class="chart">
     </div>
     <div class="legend">
-      <span class="icon" :style='{background:colors["甘肃省"]}' />
-      寒国籍
+      <span class="icon" :style='{background:colors["贵州省"]}' />
+      黔州籍
       <span class="icon" :style='{background:colors["四川省"]}' />
-      漂亮国籍
-      <span class="icon" :style='{background:colors["青海省"]}' />
-      旭日籍
+      五江籍
+      <span class="icon" :style='{background:colors["云南省"]}' />
+      天北籍
     </div>
     <div class="notes">此地图仅显示了中国的部分区域</div>
   </div>
@@ -23,7 +23,7 @@ import china from "../geo/china.json";
 
 @Component
 export default class extends Vue {
-  colors = { 青海省: "#BB31F7", 甘肃省: "#15B8FD", 四川省: "#06E1EE" };
+  colors = { 云南省: "#BB31F7", 贵州省: "#15B8FD", 四川省: "#06E1EE" };
   randomArr() {
     let arr = []
     for (let i = 0; i < 7; i++) {
@@ -43,11 +43,11 @@ export default class extends Vue {
           {
             type: "map",
             mapType: "CN", // 自定义扩展图表类型
-            data: [{ name: "甘肃省", value: 1 }],
+            data: [{ name: "贵州省", value: 100 }],
             label: { show: false, color: "white" },
             itemStyle: {
               areaColor: "#010D3D",
-              color: this.colors["甘肃省"],
+              color: this.colors["贵州省"],
               borderColor: "#01A7F7",
               emphasis: {
                 label: { color: "white" },
@@ -72,10 +72,10 @@ export default class extends Vue {
           {
             type: "map",
             mapType: "CN", // 自定义扩展图表类型
-            data: [{ name: "青海省", value: 100 }],
+            data: [{ name: "云南省", value: 100 }],
             itemStyle: {
               areaColor: "#010D3D",
-              color: this.colors["青海省"],
+              color: this.colors["云南省"],
               borderColor: "#01A7F7",
               emphasis: {
                 label: { color: "white" },
