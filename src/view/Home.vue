@@ -46,6 +46,7 @@
         </div>
         <div class="bordered 案发类型">
           <h2>案发类型统计 <span>(截止2022年8月)</span></h2>
+          <chart7 />
         </div>
       </section>
     </main>
@@ -60,6 +61,7 @@ import chart3 from '../components/chart-3.vue'
 import chart4 from '../components/chart-4.vue'
 import chart5 from '../components/chart-5.vue'
 import chart6 from '../components/chart-6.vue'
+import chart7 from '@/components/chart-7.vue';
 @Component({
   components: {
     chart1,
@@ -68,6 +70,7 @@ import chart6 from '../components/chart-6.vue'
     chart4,
     chart5,
     chart6,
+    chart7
   },
 })
 
